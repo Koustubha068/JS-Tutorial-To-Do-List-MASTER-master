@@ -95,3 +95,12 @@ function removeToDo(element){
     
     LIST[element.id].trash = true;
 }
+list.addEventListener("click", function(event){
+    const element = event.target; // return the clicked element inside list
+    const elementJob = element.attributes.job.value; // complete or delete
+    
+    if(elementJob == "complete"){
+        completeToDo(element);
+    }else if(elementJob == "delete"){
+        removeToDo(element);
+    })
