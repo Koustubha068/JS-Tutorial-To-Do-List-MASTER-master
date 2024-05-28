@@ -59,3 +59,26 @@ function addToDo(toDo, id, done, trash){
     
     list.insertAdjacentHTML(position, item);
 }
+
+
+// add an item to the list user the enter key
+document.addEventListener("keyup",function(even){
+    if(event.keyCode == 13){
+        const toDo = input.value;
+        if(toDo){
+            addToDo(toDo, id, false, false);
+            
+            LIST.push({
+                name : toDo,
+                id : id,
+                done : false,
+                trash : false
+            });
+            
+            localStorage.setItem("TODO", JSON.stringify(LIST));
+            
+            id++;
+        }
+        input.value = "";
+    }
+});
