@@ -1,4 +1,4 @@
-// CODE EXPLAINED channel
+//select elements
 
 const clear = document.querySelector(".clear");
 const dateElement = document.getElementById("date");
@@ -60,7 +60,6 @@ function addToDo(toDo, id, done, trash){
     list.insertAdjacentHTML(position, item);
 }
 
-
 // add an item to the list user the enter key
 document.addEventListener("keyup",function(even){
     if(event.keyCode == 13){
@@ -82,6 +81,7 @@ document.addEventListener("keyup",function(even){
         input.value = "";
     }
 });
+
 function completeToDo(element){
     element.classList.toggle(CHECK);
     element.classList.toggle(UNCHECK);
@@ -95,6 +95,7 @@ function removeToDo(element){
     
     LIST[element.id].trash = true;
 }
+
 list.addEventListener("click", function(event){
     const element = event.target; // return the clicked element inside list
     const elementJob = element.attributes.job.value; // complete or delete
@@ -104,7 +105,7 @@ list.addEventListener("click", function(event){
     }else if(elementJob == "delete"){
         removeToDo(element);
     }
-
-  // add item to localstorage ( this code must be added where the LIST array is updated)
-  localStorage.setItem("TODO", JSON.stringify(LIST));
-})
+    
+    // add item to localstorage ( this code must be added where the LIST array is updated)
+    localStorage.setItem("TODO", JSON.stringify(LIST));
+});
